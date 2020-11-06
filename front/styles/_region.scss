@@ -1,0 +1,331 @@
+body {
+    & .main_Region {
+        & .add_Region_Container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 1em;
+            & .add_Region {
+                height: 50%;
+            }
+            & .mainTitle_Region {
+                font-weight: 600;
+                color: #1d72c2;
+            }
+        }
+        & .tree_Container {
+            margin: 1em;
+            padding: 1em;
+            & .tree_Top_Ul {
+                list-style-type: none;
+                margin-top: 4em;
+                & .top_Li {
+                    width: 100%;
+                    position: relative;
+                    margin: 0;
+                    padding: 0.5em;
+                    background-color: rgba(178, 177, 197, 0.1);
+                    border-radius: 16px;
+                    color: #1d72c2;
+                    font-weight: 600;
+                    & .div_Content_Region {
+                        display: flex;
+                        width: 100%;
+                        flex-wrap: wrap;
+                        &::before {
+                            content: "\00a0 🗺️ \00a0";
+                        }
+
+                        & .add_Country_Btn {
+                            // margin-left: 18%;
+                            background-color: #1b5994;
+                            border: 0;
+                            &:hover {
+                                background-color: #1c6ab3;
+                            }
+                        }
+                        & > span {
+                            width: 20%;
+                        }
+                        & > .icon_Container {
+                            display: flex;
+                            width: 10%;
+                            margin: 0 0 0 1.5em;
+                            justify-content: center;
+                            align-self: center;
+                            &:hover > .fa-ellipsis-h {
+                                display: none;
+                            }
+
+                            & .fa-ellipsis-h {
+                                font-size: 1.7em;
+                                color: #1b5994;
+                            }
+                            & .fa-trash {
+                                display: none;
+                                padding: 0 0.3em 0 0.3em;
+                                color: cadetblue;
+                                font-size: 1.2em;
+                            }
+                            & .fa-trash:hover {
+                                display: none;
+                                padding: 0 0.3em 0 0.3em;
+                                color: #1b5994;
+                            }
+                            & .fa-pen {
+                                display: none;
+                                font-size: 1.2em;
+                                padding: 0 0.3em 0 0.3em;
+                                color: cadetblue;
+                            }
+                            & .fa-pen:hover {
+                                display: none;
+                                padding: 0 0.3em 0 0.3em;
+                                color: #1b5994;
+                            }
+                            & > i:hover {
+                                cursor: pointer;
+                            }
+                            &:hover .fa-trash {
+                                display: block;
+                            }
+                            &:hover .fa-pen {
+                                display: block;
+                            }
+                        }
+                        & .nested {
+                            width: 100%;
+                            list-style-type: none;
+                            margin-top: 1em;
+                            background-color: rgba(178, 177, 197, 0.2);
+                            border-radius: 16px;
+
+                            & > li {
+                                width: 100%;
+                                padding: 0.2em 0.5em 0.2em 0.5em;
+                                color: #1d72c2;
+                                font-weight: 500;
+                                & .div_Content_Country {
+                                    display: flex;
+                                    width: 60%;
+                                    flex-wrap: wrap;
+                                    justify-content: center;
+                                    align-items: center;
+
+                                    & > span {
+                                        width: 30%;
+                                    }
+                                    & > .icon_Container {
+                                        width: 10%;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-self: center;
+
+                                        &:hover > .fa-ellipsis-h {
+                                            display: none;
+                                        }
+
+                                        & .fa-ellipsis-h {
+                                            font-size: 1.7em;
+                                            color: #1d72c2;
+                                        }
+                                        & .fa-trash {
+                                            display: none;
+                                            padding: 0 0.3em 0 0.3em;
+                                            color: cadetblue;
+                                            font-size: 1.2em;
+                                        }
+                                        & .fa-trash:hover {
+                                            display: none;
+                                            padding: 0 0.3em 0 0.3em;
+                                            color: #1d72c2;
+                                        }
+                                        & .fa-pen {
+                                            display: none;
+                                            font-size: 1.2em;
+                                            padding: 0 0.3em 0 0.3em;
+                                            color: cadetblue;
+                                        }
+                                        & .fa-pen:hover {
+                                            display: none;
+                                            padding: 0 0.3em 0 0.3em;
+                                            color: #1d72c2;
+                                        }
+                                        & > i:hover {
+                                            cursor: pointer;
+                                        }
+                                        &:hover .fa-trash {
+                                            display: block;
+                                        }
+                                        &:hover .fa-pen {
+                                            display: block;
+                                        }
+                                    }
+
+                                    & > .nested {
+                                        width: 100%;
+                                        & > li {
+                                            width: 100%;
+                                            padding: 0.2em 0.5em 0.2em 0.5em;
+                                            color: #1d72c2;
+                                            font-weight: 500;
+                                            & .div_Content_City {
+                                                display: flex;
+                                                width: 100%;
+                                                justify-content: center;
+                                                align-items: center;
+                                                & > span {
+                                                    width: 30%;
+                                                }
+                                                & > .icon_Container {
+                                                    width: 10%;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-self: center;
+
+                                                    &:hover > .fa-ellipsis-h {
+                                                        display: none;
+                                                    }
+
+                                                    & .fa-ellipsis-h {
+                                                        font-size: 1.7em;
+                                                        color: #1d72c2;
+                                                    }
+                                                    & .fa-trash {
+                                                        display: none;
+                                                        padding: 0 0.3em 0 0.3em;
+                                                        color: cadetblue;
+                                                        font-size: 1.2em;
+                                                    }
+                                                    & .fa-trash:hover {
+                                                        display: none;
+                                                        padding: 0 0.3em 0 0.3em;
+                                                        color: #1d72c2;
+                                                    }
+                                                    & .fa-pen {
+                                                        display: none;
+                                                        font-size: 1.2em;
+                                                        padding: 0 0.3em 0 0.3em;
+                                                        color: cadetblue;
+                                                    }
+                                                    & .fa-pen:hover {
+                                                        display: none;
+                                                        padding: 0 0.3em 0 0.3em;
+                                                        color: #1d72c2;
+                                                    }
+                                                    & > i:hover {
+                                                        cursor: pointer;
+                                                    }
+                                                    &:hover .fa-trash {
+                                                        display: block;
+                                                    }
+                                                    &:hover .fa-pen {
+                                                        display: block;
+                                                    }
+                                                }
+                                                &::before {
+                                                    content: "🌇\00a0\00a0\00a0";
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &::before {
+                                        content: "📍\00a0\00a0\00a0";
+                                    }
+                                }
+
+                                & .add_City {
+                                    margin-left: 2em;
+                                    border: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                & .nested {
+                    display: none;
+                }
+
+                & .active {
+                    display: block;
+                }
+                & .caret {
+                    cursor: pointer;
+                    user-select: none;
+                }
+                & .caret::before {
+                    content: "\25B6";
+                    color: black;
+                    display: inline-block;
+                    margin-right: 6px;
+                }
+                & .caret-down::before {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        & .modal-content {
+            border: 0;
+            & .modal-header {
+                background-color: #1d72c2;
+                color: #ffffff;
+
+                & .close {
+                    color: #ffffff;
+                }
+            }
+            & .modal-body {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                // & .modal_addRegion_Name{
+
+                // }
+                & > input:focus {
+                    background-color: ghostwhite;
+                    outline: solid 1px #1d72c2;
+                    border: solid 2px transparent;
+                }
+            }
+
+            & .modal-footer {
+                & .modal_ModifyRegion_Btn {
+                    display: none;
+                    &--show {
+                        display: block;
+                    }
+                }
+                & .modal_AddRegion_Btn {
+                    &--hidden {
+                        display: none;
+                    }
+                }
+
+                & .modal_AddCountry_Btn {
+                    &--hidden {
+                        display: none;
+                    }
+                }
+                & .modal_ModifyCountry_Btn {
+                    display: none;
+                    &--show {
+                        display: block;
+                    }
+                }
+                & .modal_AddCity_Btn {
+                    &--hidden {
+                        display: none;
+                    }
+                }
+                & .modal_ModifyCity_Btn {
+                    display: none;
+                    &--show {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

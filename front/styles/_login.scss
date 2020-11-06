@@ -1,0 +1,96 @@
+body {
+  font-family: "Montserrat";
+  font-size: 16px;
+  & .login_Main {
+    & .login_Section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & .main_Container_Login {
+        margin: 3em 0 0 0;
+        padding: 3em;
+        border: thick double #1d72c2;
+        box-shadow: 2px 2px 7px 2px #1d72c2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & .login_Title {
+          margin: 0 0 1em 0;
+          color: #1d72c2;
+          text-align: center;
+          font-weight: 600;
+        }
+        & .ul_Log {
+          list-style-type: none;
+          display: flex;
+          flex-direction: row;
+          margin: 0;
+          & > li {
+            margin: 0.5em;
+
+            & > input {
+              margin: 0.5em;
+            }
+          }
+        }
+        & .userInput_Container {
+          display: flex;
+          flex-direction: column;
+          padding: 1em;
+          outline: none;
+          width: 90%;
+
+          & .labelUser_Input {
+            margin: 0 0 0.7em 0;
+            text-align: center;
+          }
+
+          & .user_Input:focus {
+            background-color: ghostwhite;
+            outline: solid 1px #1d72c2;
+            border: solid 2px transparent;
+          }
+        }
+        & .userPassword_Container {
+          display: flex;
+          flex-direction: column;
+          padding: 1em;
+          width: 90%;
+
+          & .labelUser_Password {
+            margin: 0 0 0.7em 0;
+            text-align: center;
+          }
+
+          & .user_Password:focus {
+            background-color: ghostwhite;
+            outline: solid 1px #1d72c2;
+            border: solid 2px transparent;
+          }
+        }
+
+        & ::-webkit-input-placeholder {
+          text-align: center;
+        }
+
+        & .submit_Btn {
+          color: #1d72c2;
+          background: transparent;
+          border: solid 1px #1d72c2;
+          height: 2em;
+          width: 5em;
+          margin-top: 1.5em;
+          transition: 0.3s;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #1d72c2;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}

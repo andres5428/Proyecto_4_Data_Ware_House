@@ -1,0 +1,438 @@
+body {
+  font-family: "Montserrat";
+  font-size: 16px;
+  & .users_Main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    & .ul_Users {
+      list-style-type: none;
+      display: flex;
+      margin: 1.5em 0 1em 0;
+
+      & > li {
+        padding: 0;
+        margin: 0 1em 0 1em;
+        border: solid 1px#1d72c2;
+        border-radius: 5px;
+
+        &:hover {
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        & .registered_Users_Link {
+          border: 0;
+          background-color: transparent;
+          padding: 0.5em 0.6em 0.5em 0.6em;
+          &--focus {
+            border-radius: 5px;
+            box-shadow: 1px 1px 7px 1px #1d72c2;
+            color: #ffffff;
+            background-color: #1d72c2;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+
+        & .create_User_Link {
+          border: 0;
+          background-color: transparent;
+          padding: 0.5em 0.6em 0.5em 0.6em;
+          &--focus {
+            border-radius: 5px;
+            box-shadow: 1px 1px 7px 1px #1d72c2;
+            color: #ffffff;
+            background-color: #1d72c2;
+            outline: none;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+
+    & .createUser_Section {
+      display: none;
+      &--show {
+        display: block;
+      }
+      & .main_Container_Users {
+        margin: 1em 1em 2em 1em;
+        padding: 2em;
+        border: thick double #1d72c2;
+        box-shadow: 2px 2px 7px 2px #1d72c2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & .users_Title_Create {
+          margin: 0 0 1em 0;
+          color: #1d72c2;
+          text-align: center;
+          font-weight: 600;
+        }
+        & .nameInput_Container_Users {
+          display: flex;
+          flex-direction: column;
+          padding: 0em;
+          outline: none;
+          width: 60%;
+
+          & .nameLabel_Input_Users {
+            margin: 0 0 0.5em 0;
+            text-align: center;
+          }
+
+          & .name_Input_Users:focus {
+            background-color: ghostwhite;
+            outline: solid 1px #1d72c2;
+            border: solid 2px transparent;
+          }
+        }
+        & .lastNameInput_Container_Users {
+          display: flex;
+          flex-direction: column;
+          padding: 0em;
+          outline: none;
+          width: 60%;
+
+          & .lastNameLabel_Input_Users {
+            margin: 0.5em 0 0.5em 0;
+            text-align: center;
+          }
+          & .lastName_Input_Users:focus {
+            background-color: ghostwhite;
+            outline: solid 1px #1d72c2;
+            border: solid 2px transparent;
+          }
+        }
+
+        & .emailInput_Container_Users {
+          display: flex;
+          flex-direction: column;
+          padding: 0em;
+          outline: none;
+          width: 60%;
+
+          & .emailLabel_Input_Users {
+            margin: 0.5em 0 0.5em 0;
+            text-align: center;
+          }
+          & .email_Input_Users:focus {
+            background-color: ghostwhite;
+            outline: solid 1px #1d72c2;
+            border: solid 2px transparent;
+          }
+        }
+
+        & .account_Type_Title_Users {
+          margin: 1.5em 0 0 0;
+        }
+        & .ul_Profile_Users {
+          list-style-type: none;
+          display: flex;
+          justify-content: center;
+          margin: 0;
+
+          & > li {
+            margin: 0.5em;
+
+            & > input {
+              margin: 0.5em;
+            }
+          }
+        }
+
+        & .password_Container_Users {
+          display: flex;
+          flex-direction: column;
+          padding: 0em;
+          margin: 0.2em 0 0 0;
+          outline: none;
+          width: 60%;
+
+          & .passwordLabel_Input_Users {
+            margin: 0.5em 0 0.5em 0;
+            text-align: center;
+          }
+          & .password_Input_Users:focus {
+            background-color: ghostwhite;
+            outline: solid 1px #1d72c2;
+            border: solid 2px transparent;
+          }
+        }
+
+        & .passwordRepeat_Container_Users {
+          display: flex;
+          flex-direction: column;
+          padding: 0em;
+          outline: none;
+          width: 60%;
+
+          & .passwordRepeatLabel_Input_Users {
+            margin: 0.5em 0 0.5em 0;
+            text-align: center;
+          }
+          & .passwordRepeat_Users:focus {
+            background-color: ghostwhite;
+            outline: solid 1px #1d72c2;
+            border: solid 2px transparent;
+          }
+        }
+
+        & .create_Button_Users {
+          color: #1d72c2;
+          background: transparent;
+          border: solid 1px #1d72c2;
+          height: 2em;
+          width: 5em;
+          margin-top: 1.5em;
+          transition: 0.3s;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #1d72c2;
+            color: #ffffff;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    & .registered_users_Section {
+      position: relative;
+      margin: 1em 0 1.5em 0;
+      &--hidden {
+        display: none;
+      }
+      & .main_Container_RegisteredUsers {
+        border: solid 1px #c6cacc;
+        & .table_RegisteredUsers {
+          & tbody {
+            border: 2px solid #c6cacc;
+            & th {
+              color: #1d72c2;
+              border: 1px solid #c6cacc;
+              text-align: center;
+              padding: 0.5em;
+            }
+
+            & tr {
+              &:hover{
+                background: rgba(139, 135, 151, 0.2);
+              }
+              & td {
+                border: 1px solid #ddd;
+                padding: 0.5em;
+              }
+
+              & .list_Menu_User {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                position: relative;
+
+                & .fas:hover {
+                  color: gainsboro;
+                  cursor: pointer;
+        
+                }
+
+                & > li:hover > .fa-ellipsis-h {
+                  display: none;
+                }
+                & .fa-ellipsis-h {
+                  font-size: 1.7em;
+                  color: #1d72c2;
+                }
+                & .fa-trash {
+                  display: none;
+                  padding: 0 0.3em 0 0.3em;
+                  color: cadetblue;
+                }
+                & .fa-trash:hover {
+                  display: none;
+                  padding: 0 0.3em 0 0.3em;
+                  color: #1d72c2;
+                }
+                & .fa-pen {
+                  display: none;
+                  padding: 0 0.3em 0 0.3em;
+                  color: cadetblue;
+                }
+                & .fa-pen:hover {
+                  display: none;
+                  padding: 0 0.3em 0 0.3em;
+                  color: #1d72c2;
+                }
+                & > li:hover > .fa-trash {
+                  display: block;
+                }
+                & > li:hover > .fa-pen {
+                  display: block;
+                }
+                & > li {
+                  display: flex;
+                  justify-content: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & .container_ModifyUser_Modal {
+      & .modal-content {
+        // position: relative;
+        & .modal-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: #1d72c2;
+          background: linear-gradient(180deg, #1d72c2 80%, #ffffff 20%);
+
+          & .modal_Header {
+            width: 100%;
+            color: #ffffff;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5em;
+            & .close {
+              color: #ffffff;
+              font-weight: 400;
+              font-size: 2.5em;
+              padding: 0;
+              margin-right: 0.2em;
+            }
+          }
+        }
+        & .modal-footer {
+          & .delete_User_Btn {
+            width: 10.81em;
+            height: 2.625em;
+            color: red;
+            text-align: center;
+            border: 0;
+            background-color: transparent;
+            &:hover {
+              cursor: pointer;
+              font-weight: 600;
+            }
+          }
+          & .modify_User_Btn {
+            width: 10.81em;
+            height: 2.625em;
+            background-color: darkgreen;
+            text-align: center;
+            color: #ffffff;
+            border: none;
+            border-radius: 0.3em;
+            &:hover {
+              cursor: pointer;
+              font-weight: 600;
+              background-color: green;
+            }
+          }
+        }
+      }
+    }
+  }
+  & .modify_User_Modal {
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    &--hidden {
+      display: none;
+    }
+
+    & .info_Container {
+      background-color: lightseagreen;
+      position: relative;
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+
+      & .modal_Header_Modify_User {
+        background-color: #1d72c2;
+        height: 9em;
+        padding: 1.66875em 0 0 1.9875em;
+        display: flex;
+        justify-content: space-between;
+
+        & .title_Modal_Modify_User {
+          margin: 0.5em 0 0 0.3em;
+          color: #ffffff;
+        }
+
+        & .closeButton_Modal_Modify_User {
+          font-size: 1.5em;
+          font-weight: 600;
+          margin: 0 1.3em 0em 0.3em;
+          height: 1em;
+          width: 1em;
+          text-align: center;
+          color: #ffffff;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      & .down_Container_Modify_User {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: flex-end;
+
+        & .delete_User_Btn {
+          width: 10.81em;
+          height: 2.625em;
+          color: red;
+          margin: 12em 0 0 0;
+          text-align: center;
+          border: 0;
+          background-color: transparent;
+          margin: 9em 0em 1em 1em;
+
+          &:hover {
+            cursor: pointer;
+            font-weight: 600;
+          }
+        }
+        & .modify_User_Btn {
+          width: 10.81em;
+          height: 2.625em;
+          background-color: darkgreen;
+          margin: 9em 2em 1em 1em;
+          text-align: center;
+          color: #ffffff;
+          border: none;
+          border-radius: 0.3em;
+          &:hover {
+            cursor: pointer;
+            font-weight: 600;
+            background-color: green;
+          }
+        }
+      }
+    }
+  }
+}

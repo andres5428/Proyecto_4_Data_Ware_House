@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Región/Ciudad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <picture class="logo_Container">
+                <img class="logo" src="../resources/yamaha-logo2.png" alt="Company_Logo">
+            </picture>
+            <ul class="ul_Nav">
+                <li><a href="contacts.html" class="contact_Html_Link">Contactos</a></li>
+                <li><a href="companies.html" class="company_Html_Link">Compañias</a></li>
+                <li><a href="users.html" class="user_Html_Link">Usuarios</a></li>
+                <li><a href="region.html" class="region_Html_Link">Región/Ciudad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main_Region">
+        <div class="tree_Container">
+            <div class="add_Region_Container">
+                <h1 class="mainTitle_Region">Regiones, países y ciudades</h1>
+                <button type="button" class="btn btn-primary add_Region" data-toggle='modal'
+                    data-target='#modal_Add_Region'>Agregar región</button>
+            </div>
+            <ul class="tree_Top_Ul">
+                <!-- <li class="top_Li">
+                    <span class="caret">Sudamérica</span>
+                    <button type="button" class="btn btn-primary add_Country">Agregar país</button>
+                    <ul class="nested">
+                        <li>Water</li>
+                        <li>Coffee</li>
+                        <li><span class="caret">Tea</span>
+                            <ul class="nested">
+                                <li>Black Tea</li>
+                                <li>White Tea</li>
+                                <li><span class="caret">Green Tea</span>
+                                    <ul class="nested">
+                                        <li>Sencha</li>
+                                        <li>Gyokuro</li>
+                                        <li>Matcha</li>
+                                        <li>Pi Lo Chun</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li> -->
+            </ul>
+        </div>
+        <div class="container_Region_Modal">
+            <div class="modal fade" tabindex="-1" id="modal_Add_Region">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header regionModal_Header">
+                            <label class="regionModal_Header_Text">Ingresa los datos para añadir una región</label>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="region_Name">Nombre</label>
+                            <input type="text" id="region_Name" class="modal_Input_Name">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary modal_AddRegion_Btn" id="modal_AddRegion_Btn">Guardar
+                                región</button>
+                            <button class="btn btn-primary modal_ModifyRegion_Btn"
+                                id=" modal_ModifyRegion_Btn">Modificar región</button>
+                            <!-- <button class="btn btn-danger" data-dismiss='modal'>&times;</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container_Country_Modal">
+            <div class="modal fade" tabindex="-1" id="modal_Add_Country">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header countryModal_Header">
+                            <label class="countryModal_Header_Text">Ingresa los datos para añadir un país</label>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="country_Name">Nombre</label>
+                            <input type="text" id="country_Name" class="modal_Input_CountryName">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary modal_AddCountry_Btn" data-dismiss="modal" >Guardar
+                                país</button>
+                            <button class="btn btn-primary modal_ModifyCountry_Btn" data-dismiss="modal"
+                                >Modificar país</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container_City_Modal">
+            <div class="modal fade" tabindex="-1" id="modal_Add_City">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <label class="cityModal_Header_Text">Ingresa los datos para añadir una ciudad</label>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="city_Name">Nombre</label>
+                            <input type="text" id="city_Name" class="modal_Input_CityName">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary modal_AddCity_Btn" data-dismiss="modal">Guardar</button>
+                            <button class="btn btn-primary modal_ModifyCity_Btn" data-dismiss="modal">Modificar ciudad</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/region.js" type="module"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f46084a78a.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

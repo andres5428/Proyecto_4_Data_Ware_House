@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conectate a tu cuenta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/styles.css">
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <picture class="logo_Container">
+        <img class="logo" src="../resources/yamaha-logo2.png" alt="Company_Logo">
+      </picture>
+      <!-- <ul class="ul_Nav">
+        <li><a href="" class="contact_Html_Link">Contactos</a></li>
+        <li><a href="" class="company_Html_Link">Compañias</a></li>
+        <li><a href="" class="user_Html_Link">Usuarios</a></li>
+        <li><a href="" class="region_Html_Link">Región/Ciudad</a></li>
+      </ul> -->
+    </nav>
+  </header>
+  <main class="login_Main">
+    <section class="login_Section">
+      <div class="main_Container_Login">
+        <h1 class="login_Title">¡Bienvenido!</h1>
+        <ul class="ul_Log">
+          <li>Usuario<input type="radio" class="user_Log" name="log" checked></li>
+          <li>Administrador<input type="radio" class="admin_Log" name="log"></li>
+        </ul>
+        <div class="userInput_Container">
+          <label for="user_Input" class="labelUser_Input">Ingrese su nombre de usuario</label>
+          <input type="text" id="user_Input" placeholder="Usuario" class="user_Input">
+        </div>
+        <div class="userPassword_Container">
+          <label for="user_Password" class="labelUser_Password">Ingrese su contraseña</label>
+          <input type="password" id="user_Password" placeholder="Contraseña" class="user_Password">
+        </div>
+        <button class="submit_Btn">Entrar</button>
+      </div>
+    </section>
+  </main>
+  <script src="../js/login.js" type="module"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>

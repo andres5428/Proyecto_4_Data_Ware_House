@@ -1,0 +1,1891 @@
+openapi: 3.0.0
+info:
+  title: Data Ware House
+  description: 'API para manejo de contactos, usuarios, compañias y regiones'
+  contact:
+    name: Andrés Camilo Jaramillo Álvarez
+    url: https://github.com/andres5428
+    email: andres54jaramillo@gmail.com
+  license:
+    name: Apache 2.0 
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 1.0.0
+  
+servers:
+# Added by API Auto Mocking Plugin
+- url: https://virtserver.swaggerhub.com/andres5428/Data_Ware_House/1.0.0
+  description: SwaggerHub API Auto Mocking
+    
+paths:
+  /wareHouse/admin/post/login:
+    post:
+      tags:
+      - admin
+      description: Permite al administrador conectarse con su username y password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                username: 
+                  type: string
+                  example: correo@gmail.com
+                  description: Debe de ser en formato de correo electrónico
+                password:
+                  type: string
+                  example: contraseña*
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX
+        '400': 
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Sin autorización
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/unauthorized'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/user/post/login:
+    post:
+      tags:
+      - user
+      description: Permite al usuario conectarse con su username y password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                username: 
+                  type: string
+                  example: correo@gmail.com
+                  description: Debe de ser en formato de correo electrónico
+                password:
+                  type: string
+                  example: contraseña*
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX
+        '400': 
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Sin autorización
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/unauthorized'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/admin/post/createAdmin:
+    post:
+      tags:
+      - Create
+      description: Permite a los administradores crear otros administradores
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: 
+                  type: string
+                  example: Daniel
+                lastname:
+                  type: string
+                  example: Orozco
+                email:
+                  type: string
+                  example: danielorozco@gmail.com
+                password:
+                  type: string
+                  example: contraseña*
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: El administrador ha sido creado
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '403':
+          description: No ingresaste los valores solicitados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/forbidden'
+                  
+  /wareHouse/admin/post/createUser:
+    post:
+      tags:
+      - Create
+      description: Permite a los administradores crear usuarios
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: 
+                  type: string
+                  example: Andrés
+                lastname:
+                  type: string
+                  example: Jaramillo
+                email:
+                  type: string
+                  example: andres@gmail.com
+                password:
+                  type: string
+                  example: contraseña*
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: El usuario ha sido creado
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '403':
+          description: No ingresaste los valores solicitados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/forbidden'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/admin/get/getUsers:
+    get:
+      tags:
+      - Get
+      description: El usuario/admin obtienes los usuarios registrados
+      security:
+        - bearerAuth: []
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{'email':'andres@gmail.com', id: 1}, {'email':'camilo@gmail.com', id: 2}]
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '404':
+          description: Datos no encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/not_found'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/adminState:
+    get:
+      tags:
+      - Get
+      description: Se obtiene el estado de la cuenta contectada. Si es administradora o usuario
+      security:
+        - bearerAuth: []
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    admin:
+                      type: boolean
+                      example: true
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Sin autorización
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/unauthorized'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/put/users/{userId}:
+     put:
+      tags: 
+      - put
+      description: Modificar un usuario existente
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: userId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: La región ha sido modificada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/delete/users/{userId}:
+    delete:
+      tags: 
+      - delete
+      description: Eliminar un usuario existente de la base de datos
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: userId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    details:
+                      type: string
+                      example: El usuario ha sido eliminado
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/getRegions:
+    get:
+      tags:
+      - Get
+      description: El usuario/admin obtiene las regiones registradas en la base de datos
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{'name':'Europa', id: 1}, {'name':'Asia', id: 2}]
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '404':
+          description: Datos no encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/not_found'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/region/{regionId}:
+    get:
+      tags:
+      - Get
+      description: Se obtienen las regiones específicas
+      parameters: 
+        - in: path
+          name: regionId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    title:
+                      type: string
+                      example: Petición aceptada
+                    data:
+                      type: array
+                      example: [{"name":"Europa", "id": 1}]
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '404':
+          description: Datos no encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/not_found'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/post/createRegion:
+    post:
+      tags:
+      - Create
+      description: Crear una nueva región en la base de datos
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: 
+                  type: string
+                  example: América del sur
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: La región ha sido creada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/put/region/{regionId}:
+    put:
+      tags: 
+      - put
+      description: Modificar una región existente
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: regionId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: La región ha sido modificada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/delete/region/{regionId}:
+    delete:
+      tags: 
+      - delete
+      description: Eliminar una región existente de la base de datos
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: regionId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    details:
+                      type: string
+                      example: La región ha sido eliminada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/country/{countryId}:
+    get:
+      tags:
+      - Get
+      description: Se obtienen los paises específicos
+      parameters: 
+        - in: path
+          name: countryId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    title:
+                      type: string
+                      example: Petición aceptada
+                    data:
+                      type: array
+                      example: [{"name":"Colombia", "id": 1, "regionId": 1}]
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '404':
+          description: Datos no encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/not_found'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/post/createCountry/{regionId}:
+    post:
+      tags:
+      - Create
+      description: Crear un nuevo país en la base de datos
+      parameters: 
+        - in: path
+          name: regionId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: 
+                  type: string
+                  example: Colombia
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: El país ha sido creado
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/put/country/{countryId}:
+    put:
+      tags: 
+      - put
+      description: Modificar un país existente
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: countryId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: El país ha sido modificado
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/delete/country/{countryId}:
+    delete:
+      tags: 
+      - delete
+      description: Eliminar un país existente de la base de datos
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: countryId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    details:
+                      type: string
+                      example: El país ha sido eliminado
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/post/createCity/{countryId}:
+    post:
+      tags:
+      - Create
+      description: Crear una nueva ciudad en la base de datos
+      parameters: 
+        - in: path
+          name: countryId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: 
+                  type: string
+                  example: Medellín
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: La ciudad ha sido creada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/put/city/{cityId}:
+    put:
+      tags: 
+      - put
+      description: Modificar una ciudad existente
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: cityId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: La ciudad ha sido modificada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/delete/city/{cityId}:
+    delete:
+      tags: 
+      - delete
+      description: Eliminar una ciudad existente de la base de datos
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: cityId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    details:
+                      type: string
+                      example: La ciudad ha sido eliminada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/getCompanies:
+     get:
+      tags:
+      - Get
+      description: Obtener las compañias registradas en la base de datos
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{'name':'Globant', id: 1, "city": "Buenos Aires"}]
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '404':
+          description: Datos no encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/not_found'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/post/createCompany/{cityId}:
+    post:
+      tags:
+      - Create
+      description: Crear una nueva compañia en la base de datos
+      parameters: 
+        - in: path
+          name: cityId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: 
+                  type: string
+                  example: Globant
+                address:
+                  type: string
+                  example: "Calle 10"
+                email:
+                  type: string
+                  example: globers@globant.com
+                telephone:
+                  type: string
+                  example: "312312312"
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: La compañia ha sido creada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/put/company/{companyId}/{cityId}:
+    put:
+      tags: 
+      - put
+      description: Modificar una compañia existente
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: cityId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+        - in: path
+          name: companyId
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: La compañia ha sido modificada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/delete/company/{companyId}:
+    delete:
+      tags: 
+      - delete
+      description: Eliminar una compañia existente de la base de datos
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: companyId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    details:
+                      type: string
+                      example: La compañia ha sido eliminada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/getCities:
+    get:
+      tags:
+      - Get
+      description: Obtener las ciudades para selecionar en la creación de la compañia
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{'name':'Medellín', id: 1}]
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '404':
+          description: Datos no encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/not_found'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/getContacts:
+    get:
+      tags:
+      - Get
+      description: Obtener los contactos existentes en la base de datos
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{'name':'Angela', id: 1, "lastname": "Álvarez", "email": "angela@gmail.com"}]
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '404':
+          description: Datos no encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/not_found'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/ASC_Contacts:
+    post:
+      tags:
+      - post
+      description: Ordenar los contactos de forma ascendente
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                column: 
+                  type: string
+                  example: Contactos
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{"name":"Angela", id: 1}]
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/get/DESC_Contacts:
+    post:
+      tags:
+      - post
+      description: Ordenar los contactos de forma descendente
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                column: 
+                  type: string
+                  example: Contactos
+                  description: Se refiere al nombre de la columna de la tabla
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{"name":"Xiomara", id: 10}]
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/post/createContact/{cityId}/{companyId}:
+    post:
+      tags:
+      - Create
+      description: Crear un nuevo contacto en la base de datos
+      parameters: 
+        - in: path
+          name: cityId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+        - in: path
+          name: companyId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name: 
+                  type: string
+                  example: "Andrés"
+                lastname:
+                  type: string
+                  example: "Jaramillo"
+                email:
+                  type: string
+                  example: "globers@globant.com"
+                position:
+                  type: string
+                  example: "FrontEnd Developer"
+                channel:
+                  type: string
+                  example: "Whatsapp"
+                interest:
+                  type: integer
+                  example: 50
+                account:
+                  type: string
+                  example: "31231020"
+                preference:
+                  type: string
+                  example: "Canal favorito"
+                image:
+                  type: string
+                  example: "/resources/yamaha-logo2.png"
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: El contacto ha sido creado
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/put/contact/{cityId}/{companyId}/{contactId}:
+    put:
+      tags: 
+      - put
+      description: Modificar un contacto existente
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: cityId
+          required: true
+          schema: 
+            type: integer
+            example: 2
+        - in: path
+          name: companyId
+          required: true
+          schema:
+            type: integer
+            example: 2
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    detail:
+                      type: string
+                      example: El contacto ha sido modificada
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/delete/contact/{contactId}:
+    delete:
+      tags: 
+      - delete
+      description: Eliminar un contacto existente de la base de datos
+      security:
+        - bearerAuth: []
+      parameters: 
+        - in: path
+          name: contactId
+          required: true
+          schema: 
+            type: integer
+            example: 3
+      responses: 
+        '200': 
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status: 
+                      type: integer
+                      example: 200
+                    ok: 
+                      type: boolean
+                      example: true
+                    details:
+                      type: string
+                      example: El contacto ha sido eliminado
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /wareHouse/post/postFilteredContacts:
+    post:
+      tags:
+      - post
+      description: Obtener los contactos filtrados
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                search: 
+                  type: string
+                  example: Angela
+                  description: Dato relacionado con el contacto a buscar
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   properties:
+                    status:
+                      type: integer
+                      example: 200
+                    ok:
+                      type: boolean
+                      example: true
+                    data:
+                      type: array
+                      example: [{"name":"Angela", id: 10}]
+                    title:
+                      type: string
+                      example: Petición aceptada
+        '400':
+          description: Petición errónea
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bad_request'
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+  /api/excel/wareHouse/excel/get/contacts:
+    get:
+      tags:
+      - Get
+      description: Obtener un archivo xlsx (excel) con los contactos
+      responses: 
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+        '500': 
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/internal_error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    bad_request:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 400
+        ok:
+          type: boolean
+          example: false
+        title:
+          type: string
+          example: Error en petición
+        detail:
+          type: string
+          example: No has ingresado los datos solicitados.
+    unauthorized:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 401
+        ok:
+          type: boolean
+          example: false
+        title:
+          type: string
+          example: Sin autorización
+        detail:
+          type: string
+          example: La contraseña es incorrecta
+    forbidden:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 403
+        ok:
+          type: boolean
+          example: false
+        title:
+          type: string
+          example: Prohibido
+        detail:
+          type: string
+          example: El valor ingresado ya está registrado
+    not_found:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 404
+        ok:
+          type: boolean
+          example: false
+        title:
+          type: string
+          example: Contenido no encontrado
+        detail:
+          type: string
+          example: La información solicitada no se encuentra disponible en la base de datos
+    internal_error:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 500
+        ok:
+          type: boolean
+          example: false
+        title:
+          type: string
+          example: Error interno del servidor
+        detail:
+          type: string
+          example: No se pudo establecer conexión con la base de datos
+  

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <picture class="logo_Container">
+                <img class="logo" src="../resources/yamaha-logo2.png" alt="Company_Logo">
+            </picture>
+            <ul class="ul_Nav">
+                <li><a href="contacts.html" class="contact_Html_Link">Contactos</a></li>
+                <li><a href="companies.html" class="company_Html_Link">Compañias</a></li>
+                <li><a href="users.html" class="user_Html_Link">Usuarios</a></li>
+                <li><a href="region.html" class="region_Html_Link">Región/Ciudad</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main_Contacts">
+        <div class="title_Container_Contacts">
+            <h1 class="title_Contacts">Contactos</h1>
+        </div>
+        <section class="search_Section_Container">
+            <div class="Search_Container">
+                <div class="input-group">
+                    <input type="text" class="form-control input_Contact_Search" placeholder="Ingresa tu búsqueda...">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary Search_Btn" type="button"><i
+                                class="fas fa-search"></i></button>
+                        <button class="btn btn-outline-secondary Refresh_Btn" type="button"><i
+                                class="fas fa-sync-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="add_Export_Container">
+                <button class="btn_Export_Contacts">Exportar contactos</button>
+
+                <button class="btn btn-primary add_Contact_Btn" data-toggle='modal'
+                    data-target='#modal_Add_Contact'>Agregar
+                    contacto</button>
+            </div>
+
+        </section>
+        <div class="Delete_Selected_Container Delete_Selected_Container--hidden">
+            <div class="div_Container">
+                <div class="Selected_Container">
+                    <label for="" class="number_Selected_Contacts">Seleccionados</label>
+                </div>
+                <div class="Delete_Container">
+                    <i class="fas fa-trash"></i>
+                    <button class="Delete_Selected_Contacts_Btn">Eliminar contactos</button>
+                </div>
+            </div>
+        </div>
+        <section class="contacts_Section_Container">
+            <table class="contact_Table">
+                <tbody class="contact_TableBody">
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>Contacto</th>
+                        <th>País/Región</th>
+                        <th>Compañia</th>
+                        <th>Cargo</th>
+                        <th>Canal preferido</th>
+                        <th>Interes</th>
+                        <th>Acciones</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Camilo Jara</td>
+                        <td>Colombia/Sud</td>
+                        <td>Othala</td>
+                        <td>Ingeniero</td>
+                        <td>Whatsapp</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                    aria-valuemin="0" aria-valuemax="100">25%
+                                </div>
+                            </div>
+                        </td>
+                        <td>acc</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <div class="container_AddContact_Modal">
+            <div class="modal fade" tabindex="-1" id="modal_Add_Contact">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal_Header">
+                                <label class="contactModal_Header_Text">Ingresa los datos para agregar un nuevo
+                                    contacto</label>
+                                <button class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="Input_Container_Header">
+                                <form class="md-form form_Img">
+                                    <div class="file-field">
+                                        <div class="image-area">
+                                            <img id="imageResult" src="../resources/1200px-Google_Contacts_icon.svg.png"
+                                                alt="Contacto" class="Img_CreateContact">
+                                            <label for="upload">
+                                                <i class="fa fa-camera"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group test">
+                                        <input id="upload" type="file" class="form-control border-0 input_File">
+                                    </div>
+                                </form>
+
+                                <div class="form-group">
+                                    <label for="input_ContactName">Nombre*</label>
+                                    <input type="text" class="form-control input_ContactName" id="input_ContactName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_ContactLastName">Apellido*</label>
+                                    <input type="text" class="form-control input_ContactLastName"
+                                        id="input_ContactLastName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_ContactPosition">Cargo*</label>
+                                    <input type="text" class="form-control input_ContactPosition"
+                                        id="input_ContactPosition">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_ContactEmail">Email*</label>
+                                    <input type="text" class="form-control input_ContactEmail" id="input_ContactEmail">
+                                </div>
+                                <div class="form-group">
+                                    <label for="select_ContactCompany">Compañia*</label>
+                                    <select id="select_ContactCompany" class="form-control contact_Company_Select">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="test">
+                                <div class="form-group">
+                                    <label for="contact_Region">Región</label>
+                                    <select id="contact_Region" class="form-control contact_Region_Select">
+                                        <option value="">1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact_Country">País</label>
+                                    <select id="contact_Country" class="form-control contact_Country_Select" disabled>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact_City">Ciudad</label>
+                                    <select id="contact_City" class="form-control contact_City_Select" disabled>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_Contact_Address">Dirección</label>
+                                    <input type="text" class="form-control input_Contact_Address"
+                                        id="input_Contact_Address">
+                                </div>
+                                <div class="label_Progress_Container">
+                                    <label for="progress_Bar_Modal">Interes</label>
+                                    <div class="progress">
+                                        <div class="progress-bar interest_Bar" role="progressbar" style="width: 0%;"
+                                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                            id="progress_Bar_Modal">0%
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact_Interest"></label>
+                                    <select id="contact_Interest" class="form-control contact_Interest_Select">
+                                        <option value="0">0%</option>
+                                        <option value="25">25%</option>
+                                        <option value="50">50%</option>
+                                        <option value="75">75%</option>
+                                        <option value="100">100%</option>
+                                    </select>
+                                </div>
+                                <div class="extra_Container">
+                                    <div class="form-group">
+                                        <label for="input_ContactChannel">Canal de contacto</label>
+                                        <select class="form-control input_ContactChannel_Select"
+                                            id="input_ContactChannel">
+                                            <option value="No" selected>Sin canal</option>
+                                            <option value="Teléfono">Teléfono</option>
+                                            <option value="Whatsapp">Whatsapp</option>
+                                            <option value="Email">Email</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input_ContactAccount" class="label_Account">Número / Cuenta</label>
+                                        <input type="text" class="form-control input_ContactAccount"
+                                            id="input_ContactAccount" placeholder="@usuario" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact_Preference">Preferencias</label>
+                                        <select id="contact_Preference" class="form-control contact_Preference_Select">
+                                            <option value="Sin preferencia" selected>Sin preferencia</option>
+                                            <option value="Canal favorito">Canal favorito</option>
+                                            <option value="No molestar">No molestar</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary modal_AddContact_Btn">Guardar</button>
+                            <button class="btn btn-primary modal_ModifyContact_Btn">Modificar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal_DeleteConfirm_Container">
+            <div class="modal fade" tabindex="-1" id="modal_Delete_Confirm">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal_Header modal_Header_DeleteConfirm">
+                                <label class="contactModal_Header_Text">¿Seguro quieres eliminar el contacto?</label>
+                                <button class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                        </div>
+                        <div class="modal-body modal_Body_DeleteConfirm">
+                            <button class="btn btn-primary modal_DeleteConfirm_Cancel"
+                                data-dismiss="modal">Cancelar</button>
+                            <button class="btn btn-primary modal_DeleteConfirm_Accept"
+                                data-toggle="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/f46084a78a.js" crossorigin="anonymous"></script>
+        <script type="module" src="../js/contact.js"></script>
+    </main>
+    <footer class="footer">
+        <div class="foot_Element_Container">
+            <div class="paging_Container">
+                <label for="paging" class="label_Paging">1-10</label>
+                <div class="button_Container" id="paging">
+                    <button class="btn_Page_Left"><i class="fas fa-angle-left"></i></button>
+                    <button class="btn_Page_Right"><i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

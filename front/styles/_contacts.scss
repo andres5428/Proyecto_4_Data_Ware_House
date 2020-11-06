@@ -1,0 +1,389 @@
+body {
+    width: 100%;
+    & .main_Contacts {
+        & .title_Container_Contacts {
+            & .title_Contacts {
+                margin: 1.5em 0 0.5em 1em;
+                font-weight: 600;
+            }
+        }
+        & .search_Section_Container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 3em 0;
+            & .Search_Container {
+                width: 45%;
+                display: flex;
+                align-items: center;
+                & .input-group {
+                    margin-left: 2em;
+                    // & .input-group-append {
+                    // }
+                }
+            }
+            & .add_Export_Container {
+                width: 50%;
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 2em;
+                & > button {
+                    padding: 0.5em;
+                    border-radius: 2px;
+                    border: solid 1px #c6cacc;
+                }
+                & .btn_Export_Contacts {
+                    &:hover {
+                        background: rgba(139, 135, 151, 0.2);
+                    }
+                }
+                & > select {
+                    margin: 0 0.3em 0 0.3em;
+                    padding: 0.5em;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        & .contacts_Section_Container {
+            border: solid 1px #c6cacc;
+            margin: 0em 2em 0 2em;
+
+            & .contact_Table {
+                width: 100%;
+                & .contact_TableBody {
+                    & tr:hover {
+                        background: rgba(139, 135, 151, 0.2);
+                    }
+                    & .tr_Selected {
+                        background: rgba(113, 80, 235, 0.2);
+                    }
+                    width: 100%;
+                    & th {
+                        text-align: center;
+                        padding: 0.5em;
+                        & > i {
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    & .contactName_Th {
+                        width: 14em;
+                    }
+                    & td {
+                        text-align: center;
+                        & .icon_Container {
+                            display: flex;
+                            justify-content: center;
+                            &:hover > .fa-ellipsis-h {
+                                display: none;
+                            }
+                            & .fa-ellipsis-h {
+                                font-size: 1.7em;
+                                color: #1d72c2;
+                            }
+                            & .fa-trash {
+                                display: none;
+                                padding: 0 0.3em 0 0.3em;
+                                color: cadetblue;
+                                font-size: 1.2em;
+                            }
+                            & .fa-trash:hover {
+                                display: none;
+                                padding: 0 0.3em 0 0.3em;
+                                color: #1d72c2;
+                            }
+                            & .fa-pen {
+                                display: none;
+                                font-size: 1.2em;
+                                padding: 0 0.3em 0 0.3em;
+                                color: cadetblue;
+                            }
+                            & .fa-pen:hover {
+                                display: none;
+                                padding: 0 0.3em 0 0.3em;
+                                color: #1d72c2;
+                            }
+                            & > i:hover {
+                                cursor: pointer;
+                            }
+                            &:hover .fa-trash {
+                                display: block;
+                            }
+                            &:hover .fa-pen {
+                                display: block;
+                            }
+                        }
+                        & .div_Contact_Img {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            & .contact_Img {
+                                width: 2.5em;
+                                border: solid 1px #0683f9;
+                                border-radius: 2em;
+                            }
+                        }
+                    }
+                    & .contact_Name_Td {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin: 0 0 0 1em;
+                        & > label {
+                            margin: 0 0 0 1em;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .container_AddContact_Modal {
+            & .modal-content {
+                & .modal-header {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: #1d72c2;
+                    background: linear-gradient(180deg, #1d72c2 60%, #ffffff 40%);
+                    & .modal_Header {
+                        width: 100%;
+                        color: #ffffff;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 1.5em;
+                        & .contactModal_Header_Text {
+                            margin: 0;
+                        }
+                        & .close {
+                            color: #ffffff;
+                            font-weight: 400;
+                            font-size: 2.5em;
+                            padding: 0;
+                            margin-right: 0.2em;
+                        }
+                    }
+
+                    & .Input_Container_Header {
+                        display: flex;
+                        background-color: #ffffff;
+                        padding: 1em;
+                        border: solid 3px #0683f9;
+                        border-radius: 6.5px;
+                        & .form_Img {
+                            position: relative;
+                            margin-right: 2em;
+                            & .file-field {
+                                width: 5.31em;
+                                height: 5.31em;
+                                border-radius: 5.31em;
+                                border: solid 2px #0683f9;
+                                margin: 0;
+                                & .image-area {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 100%;
+                                    height: 100%;
+                                    & > img {
+                                        border-radius: 50%;
+                                        width: 103%;
+                                        height: 103%;
+                                    }
+                                    & > label {
+                                        position: absolute;
+                                        bottom: 0%;
+                                        right: 5%;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        & > i {
+                                            padding: 0;
+                                            color: #ffffff;
+                                            background-color: #1d72c2;
+                                            border-radius: 50%;
+                                            padding: 0.2em;
+                                            &:hover {
+                                                cursor: pointer;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            & .input_File {
+                                display: none;
+                            }
+                        }
+
+                        & .form-group {
+                            margin: 0.5em;
+
+                            & > label {
+                                font-size: 0.8em;
+                            }
+                        }
+                    }
+                }
+
+                & .modal-body {
+                    & .test {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        width: 100%;
+                        margin-left: 1em;
+
+                        & .form-group {
+                            padding: 0.5em;
+                            margin: 0;
+                            width: 15%;
+                            & > label {
+                                font-size: 0.8em;
+                            }
+                            & .contact_Interest_Select {
+                                width: 60%;
+                            }
+                        }
+                        & .extra_Container {
+                            width: 100%;
+                            display: flex;
+                        }
+                        & .label_Progress_Container {
+                            display: flex;
+                            flex-direction: column;
+                            width: 25%;
+                            & .progress {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                & .modal-footer {
+                    & .modal_AddContact_Btn {
+                        &--hidden {
+                            display: none;
+                        }
+                    }
+                    & .modal_ModifyContact_Btn {
+                        &--hidden {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        & .modal_DeleteConfirm_Container {
+            & .modal-header {
+                width: 100%;
+                & .modal_Header_DeleteConfirm {
+                    width: 100%;
+                }
+            }
+            & .modal_Body_DeleteConfirm {
+                display: flex;
+                justify-content: flex-end;
+
+                & .modal_DeleteConfirm_Accept {
+                    background-color: transparent;
+                    text-align: center;
+                    color: #1d72c2;
+                    border: none;
+                    border-radius: 0.3em;
+                    font-weight: 500;
+                    border: 1px solid #1d72c2;
+                    margin: 0.225em;
+                    &:hover {
+                        cursor: pointer;
+                        font-weight: 600;
+                        background-color: #1d72c2;
+                        color: #ffffff;
+                        transition: 0.2s;
+                    }
+                }
+                & .modal_DeleteConfirm_Cancel {
+                    color: red;
+                    border: 1px solid red;
+                    text-align: center;
+                    background-color: transparent;
+                    margin: 0.225em;
+                    &:hover {
+                        cursor: pointer;
+                        font-weight: 600;
+                        background-color: red;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+        & .Delete_Selected_Container {
+            width: 100%;
+            & .div_Container {
+                display: flex;
+                justify-content: space-between;
+                margin: 0 2em 0 2em;
+                & .Selected_Container {
+                    background: rgba(194, 188, 188, 0.41);
+                    display: flex;
+                    align-items: center;
+                    border-radius: 4px;
+                    & > label {
+                        color: #0683f9;
+                        margin: 0;
+                        padding: 0.4em;
+                        font-size: 0.8em;
+                    }
+                }
+                & .Delete_Container {
+                    display: flex;
+                    align-items: center;
+                    & > button {
+                        margin: 0;
+                        color: #0683f9;
+                        margin: 0 0.3em 0 0.3em;
+                        border: 0;
+                        background-color: transparent;
+                        padding: 0;
+                    }
+                    & > i {
+                        color: #1d72c2;
+                        margin: 0 0.3em 0 0.3em;
+                    }
+                }
+            }
+            &--hidden {
+                display: none;
+            }
+        }
+    }
+    & .footer {
+        width: 100%;
+        & .foot_Element_Container {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0 2em 0 2em;
+
+            & .paging_Container {
+                display: flex;
+                align-items: center;
+                & > label {
+                    margin: 0;
+                }
+                & .button_Container {
+                    display: flex;
+                    justify-content: space-around;
+
+                    & .btn_Page_Left {
+                        border: 0;
+                        background-color: transparent;
+                    }
+                    & .btn_Page_Right {
+                        border: 0;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

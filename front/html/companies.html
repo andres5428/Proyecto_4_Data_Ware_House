@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <title>Compañias</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <picture class="logo_Container">
+                <img class="logo" src="../resources/yamaha-logo2.png" alt="Company_Logo">
+            </picture>
+            <ul class="ul_Nav">
+                <li><a href="contacts.html" class="contact_Html_Link">Contactos</a></li>
+                <li><a href="companies.html" class="company_Html_Link">Compañias</a></li>
+                <li><a href="users.html" class="user_Html_Link">Usuarios</a></li>
+                <li><a href="region.html" class="region_Html_Link">Región/Ciudad</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main_Companies">
+        <div>
+            <div class="header_Company">
+                <h1>Compañias</h1>
+                <button type="button" class="btn btn-primary add_Company_Btn">Agregar</button>
+
+            </div>
+            <div class="table_Companies_Container">
+                <table class="companies_Table">
+                    <!-- <tbody>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Ciudad</th>
+                            <th>Dirección</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Globant
+                            </td>
+                            <td>
+                                Buenos Aíres
+                            </td>
+                            <td>
+                                Calle 10
+                            </td>
+                            <td>
+                                globant@globant.com.co
+                            </td>
+                            <td>
+                                300032130
+                            </td>
+                            <td>
+                                X
+                            </td>
+                        </tr>
+                    </tbody> -->
+                </table>
+            </div>
+        </div>
+        <div class="container_AddCompany_Modal">
+            <div class="modal fade" tabindex="-1" id="modal_Add_Company">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <label class="companyModal_Header_Text">Ingresa los datos para <strong>añadir</strong> una
+                                compañia</label>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="test">
+                                <div class="input_Container">
+                                    <label for="company_Name">Nombre</label>
+                                    <input type="text" id="company_Name" class="modal_Input_CompanyName">
+                                </div>
+                                <div class="input_Container">
+                                    <label for="select_City">Ciudad de origen</label>
+                                    <select class="mdb-select md-form select_City" id="select_City"
+                                        searchable="Search here..">
+                                        <option value="" disabled selected>Escoge la ciudad de origen</option>
+                                    </select>
+                                </div>
+                                <div class="input_Container">
+                                    <label for="company_Address">Dirección</label>
+                                    <input type="text" id="company_Address" class="modal_Input_CompanyAddress">
+                                </div>
+                                <div class="input_Container">
+                                    <label for=" company_Email">Email</label>
+                                    <input type="text" id="company_Email" class="modal_Input_CompanyEmail">
+                                </div>
+                                <div class="input_Container">
+                                    <label for=" company_Tel">Teléfono</label>
+                                    <input type="text" id="company_Tel" class="modal_Input_CompanyTel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary modal_AddCompany_Btn">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container_ModifyCompany_Modal">
+            <div class="modal fade" tabindex="-1" id="modal_Modify_Company">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <label class="companyModifyModal_Header_Text">Ingresa los datos para
+                                <strong>modificar</strong> la
+                                seleccionada</label>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="test">
+                                <div class="input_Container">
+                                    <label for="company_Modify_Name">Nombre</label>
+                                    <input type="text" id="company_Modify_Name" class="modal_Input_CompanyModifyName">
+                                </div>
+                                <div class="input_Container">
+                                    <label for="select_Modify_City">Ciudad de origen</label>
+                                    <select class="mdb-select md-form select_Modify_City" id="select_Modify_City"
+                                        searchable="Search here..">
+                                        <option value="" disabled selected>Modifica la ciudad de origen</option>
+                                    </select>
+                                </div>
+                                <div class="input_Container">
+                                    <label for="company_Modify_Address">Dirección</label>
+                                    <input type="text" id="company_Modify_Address"
+                                        class="modal_Input_CompanyModifyAddress">
+                                </div>
+                                <div class="input_Container">
+                                    <label for=" company_Modify_Email">Email</label>
+                                    <input type="text" id="company_Modify_Email" class="modal_Input_CompanyModifyEmail">
+                                </div>
+                                <div class="input_Container">
+                                    <label for=" company_Modify_Tel">Teléfono</label>
+                                    <input type="text" id="company_Modify_Tel" class="modal_Input_CompanyModifyTel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary modal_ModifyCompany_Btn">Modificar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/company.js" type="module"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f46084a78a.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
