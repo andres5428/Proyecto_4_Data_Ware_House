@@ -385,8 +385,6 @@ const companies = [
         cityId: 16,
     },
 ]
-
-
 const users = [
     {
         name: "user1",

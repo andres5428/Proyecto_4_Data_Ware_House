@@ -17,7 +17,7 @@ npm install
 
 
 # Inicialización
-npm start
+nodemon server.js
 
 ## Configuración de base de datos
 
@@ -37,9 +37,11 @@ Parametrización de la base de datos: {
 1. Instalar XAMPP u otra solución de servidor web que permita la conexión de la base de datos e inicializar dicho servidor.
 2. Debe de crearse una base de datos llamada "data_ware_house" en phpmyadmin.
 3. Utilizar el comando "npm install" para instalar todas las dependencias establecidas en el package.json
-4. En la carpeta llamada "fill_database" se encuentra una archivo de javascript para llenar la base de datos. Acceder a la ruta desde la consola (cd back/fill_database) y ejecutar el comando "node data.js".
-5. Para iniciar el servidor acceder a la carpeta de back (cd back) y ejercutar el comando "nodemon server.js"
-6. Empezar a disfrutar realizando queries a la base de datos
+4. En la carpeta llamada "fill_database" se encuentra una archivo de javascript para llenar la base de datos. Acceder a la ruta desde la consola (cd back/database/fill_database) y ejecutar el comando "node data.js".
+5. Para iniciar el servidor acceder a la carpeta de back (cd back) y ejecutar el comando "nodemon server.js"
+6. Con una extensión de visual studio code como live server ejecutar el archivo login.html que esta dentro de la carpeta "html", en la carpeta "front".
+7. Ingresar con el usuario "user1@acamica.com" password "user123" o con el administrador "admin1@acamica.com" password "admin123"
+8. Empezar a disfrutar realizando queries a la base de datos
 
 ## Author
 
