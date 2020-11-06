@@ -3,6 +3,11 @@
  */
 require('dotenv').config();
 
+/**
+ * Config port variable
+ */
+const { config } = require('./database/config/config')
+
 // Sequelize Init
 const sequelize = require('../back/database/db');
 
@@ -12,7 +17,7 @@ const sequelize = require('../back/database/db');
 
 const express = require('express');
 const server = express();
-const port = process.env.PORT;
+const port = config.port;
 
 /**
  * Errorhandler
@@ -29,12 +34,13 @@ const helmet = require("helmet");
  */
 require('./database/associations');
 
+
 /**
  * Server init
  */
 server.listen(port, () => {
   console.log(`El servidor funciona correctamente a través del puerto ${port}`);
-  sequelize.sync({ force: false }).then(() => { // force: false = no drop table
+  sequelize.sync({ force: false }).then(() => {
     console.log("Conexión establecida con la base de datos")
   }).catch((error) => {
     console.log("Se ha producido un error", error);

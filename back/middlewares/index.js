@@ -12,6 +12,16 @@ const contact = require('../database/models/contact');
 const excel = require("exceljs");
 
 /**
+ * Init dotenv
+ */
+require('dotenv').config();
+
+/**
+ * Config secret Key variable
+ */
+const { config } = require('../database/config/config')
+
+/**
  * Import models
  */
 const user = require('../database/models/user');
@@ -89,7 +99,7 @@ const download = (req, res, next) => {
  */
 
 const construct_JWT = ((req, res, next) => {
-  const token = jwt.sign(req.body, `${process.env.SECRET_KEY}`, { expiresIn: '60m' });
+  const token = jwt.sign(req.body, `${config.secret_Key}`, { expiresIn: '60m' });
   req.token = token;
   next();
 });
@@ -132,7 +142,7 @@ const extract_JWT = ((req, res, next) => {
  */
 
 const jsonVerify = ((req, res, next) => {
-  jwt.verify(req.token, process.env.SECRET_KEY, ((err, data) => {
+  jwt.verify(req.token, config.secret_Key, ((err, data) => {
     if (err) {
       const error = new Error('El token enviado no es válido');
       error.status = 401;
@@ -152,7 +162,7 @@ const jsonVerify = ((req, res, next) => {
  */
 
 const jsonVerify_Admin = ((req, res, next) => {
-  jwt.verify(req.token, process.env.SECRET_KEY, ((err, data) => {
+  jwt.verify(req.token, config.secret_Key, ((err, data) => {
     if (err) {
       const error = new Error('El token enviado no es válido');
       error.status = 401;

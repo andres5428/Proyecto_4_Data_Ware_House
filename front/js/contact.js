@@ -101,7 +101,6 @@ const check_Admin_State = (() => {
     request.get(URL_ADMIN_STATE).then((response) => {
         if (response.ok === true) {
             admin_State = response.admin
-            console.log(admin_State)
         }
         else {
             swal(`${response.title}`, `${response.detail}`, 'error').then(() =>

@@ -1,23 +1,11 @@
-// /**
-//  * Init dotenv
-//  */
-// require('dotenv').config();
-
 const { Sequelize } = require('sequelize');
-
+const { config } = require('./config/config');
 const sequelize = new Sequelize(
-  // process.env.DATABASE_NAME,
-  // process.env.DATABASE_USERNAME,
-  // process.env.DATABASE_PASSWORD,
-  // {
-  //   host: process.env.DATABASE_HOST,
-  //   dialect: "mysql"
-  // }
-  "data_ware_house",
-  "root",
-  "",
+  config.databaseName,
+  config.username,
+  config.password,
   {
-    host: "localhost",
+    host: config.host,
     dialect: "mysql"
   }
 );
