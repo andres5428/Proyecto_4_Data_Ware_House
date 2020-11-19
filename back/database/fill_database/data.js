@@ -16,6 +16,7 @@ const contacts = [
         position: "Ejecutiva comercial",
         channel: "Whatsapp",
         account: "Ali_Eche",
+        address: "Calle 10",
         interest: 50,
         preference: 'Sin preferencia',
         image: '../resources/yamaha-logo2.png',
@@ -29,6 +30,7 @@ const contacts = [
         position: "Desarrollador FE",
         channel: "Whatsapp",
         account: "milo_54",
+        address: "Calle 11",
         interest: 100,
         preference: 'Sin preferencia',
         image: '../resources/yamaha-logo2.png',
@@ -42,6 +44,7 @@ const contacts = [
         position: "TL",
         channel: "Teléfono",
         account: "Felipe_12",
+        address: "Calle 12",
         interest: 100,
         preference: 'Canal favorito',
         image: null,
@@ -55,6 +58,7 @@ const contacts = [
         position: "Desarrollador BE",
         channel: "Teléfono",
         account: "andres_12",
+        address: "Calle 13",
         interest: 75,
         preference: 'Canal favorito',
         image: '../resources/yamaha-logo2.png',
@@ -68,6 +72,7 @@ const contacts = [
         position: "Desarrollador BE",
         channel: "Teléfono",
         account: "Laura_12",
+        address: "Calle 14",
         interest: 25,
         preference: 'Canal favorito',
         image: null,
@@ -81,6 +86,7 @@ const contacts = [
         position: "Software D",
         channel: "Teléfono",
         account: "Cristian_12",
+        address: "Calle 15",
         interest: 100,
         preference: 'Canal favorito',
         image: null,
@@ -94,6 +100,7 @@ const contacts = [
         position: "Coach",
         channel: "Whatsapp",
         account: "Mon_12",
+        address: "Calle 16",
         interest: 100,
         preference: 'Sin preferencia',
         image: '../resources/yamaha-logo2.png',
@@ -107,6 +114,7 @@ const contacts = [
         position: "Coach",
         channel: "Whatsapp",
         account: "Mocca_78",
+        address: "Calle 17",
         interest: 100,
         preference: 'Sin preferencia',
         image: '../resources/yamaha-logo2.png',
@@ -120,6 +128,7 @@ const contacts = [
         position: "Engineer",
         channel: "Teléfono",
         account: "Jor_12",
+        address: "Calle 18",
         interest: 50,
         preference: 'Sin preferencia',
         image: '../resources/yamaha-logo2.png',
@@ -133,6 +142,7 @@ const contacts = [
         position: "TL",
         channel: "Whatsapp",
         account: "st_22",
+        address: "Calle 19",
         interest: 100,
         preference: 'Sin preferencia',
         image: null,
@@ -146,6 +156,7 @@ const contacts = [
         position: "Coach",
         channel: "Whatsapp",
         account: "lu_100",
+        address: "Calle 20",
         interest: 100,
         preference: 'Sin preferencia',
         image: '../resources/yamaha-logo2.png',
@@ -157,49 +168,61 @@ const contacts = [
 const regions = [
     {
         name: "America",
+        id: 1
     },
     {
         name: "Europa",
+        id: 2
     },
     {
         name: "Asia",
+        id: 3
     },
     {
         name: "África",
+        id: 4
     },
 ]
 
 const countries = [
     {
         name: "Colombia",
+        id: 1,
         regionId: 1,
     },
     {
         name: "Argentina",
+        id: 2,
         regionId: 1,
     },
     {
         name: "Alemania",
+        id: 3,
         regionId: 2,
     },
     {
         name: "Francia",
+        id: 4,
         regionId: 2,
     },
     {
         name: "China",
+        id: 5,
         regionId: 3,
     },
     {
         name: "Japón",
+        id: 6,
         regionId: 3,
     },
     {
         name: "Costa de Marfil",
+        id: 7,
         regionId: 4,
     },
     {
         name: "Egipto",
+        id: 8,
         regionId: 4,
     },
 ]
@@ -207,66 +230,82 @@ const countries = [
 const cities = [
     {
         name: "Medellín",
+        id: 1,
         countryId: 1,
     },
     {
         name: "Bogotá",
+        id: 2,
         countryId: 1,
     },
     {
         name: "Buenos Aires",
+        id: 3,
         countryId: 2,
     },
     {
         name: "Rosario",
+        id: 4,
         countryId: 2,
     },
     {
         name: "Berlín",
+        id: 5,
         countryId: 3,
     },
     {
         name: "Munich",
+        id: 6,
         countryId: 3,
     },
     {
         name: "París",
+        id: 7,
         countryId: 4,
     },
     {
         name: "Montpellier",
+        id: 8,
         countryId: 4,
     },
     {
         name: "Beijing",
+        id: 9,
         countryId: 5,
     },
     {
         name: "Hong Kong",
+        id: 10,
         countryId: 5,
     },
     {
         name: "Tokio",
+        id: 11,
         countryId: 6,
     },
     {
         name: "Kyoto",
+        id: 12,
         countryId: 6,
     },
     {
         name: "Abidjan",
+        id: 13,
         countryId: 7,
     },
     {
         name: "Bouake",
+        id: 14,
         countryId: 7,
     },
     {
         name: "Cairo",
+        id: 15,
         countryId: 8,
     },
     {
         name: "Alexandria",
+        id: 16,
         countryId: 8,
     },
 ]

@@ -22,7 +22,7 @@ body {
         list-style-type: none;
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
         margin-right: 1em;
         margin-bottom: 0;
         margin-top: 0;
@@ -34,19 +34,23 @@ body {
           font-weight: 400;
           cursor: pointer;
 
-          & .user_Html_Link{
+          & .user_Html_Link {
+            display: none;
+            &--show {
+              display: block;
+              color: #ffffff;
+              text-decoration: none;
+            }
+          }
+          & .company_Html_Link {
             color: #ffffff;
             text-decoration: none;
           }
-          & .company_Html_Link{
+          & .contact_Html_Link {
             color: #ffffff;
             text-decoration: none;
           }
-          & .contact_Html_Link{
-            color: #ffffff;
-            text-decoration: none;
-          }
-          & .region_Html_Link{
+          & .region_Html_Link {
             color: #ffffff;
             text-decoration: none;
           }

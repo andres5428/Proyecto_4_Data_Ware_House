@@ -148,6 +148,40 @@ router.get('/wareHouse/admin/get/getUsers', (req, res) => {
   });
 });
 
+/**
+* Get one contact
+*/
+
+router.get('/wareHouse/get/getOneUser/:contactId', (req, res) => {
+  contact.findOne({
+    where: { id: req.params.contactId },
+    include: { all: true, nested: true }
+  }).then((contact) => {
+    if (contact === null) {
+      res.status(404).json({
+        status: 404,
+        ok: false,
+        title: 'Contenido no encontrado',
+        detail: 'No se encuentran contactos registrados con ese id'
+      })
+    }
+    else {
+      res.status(200).json({
+        status: 200,
+        title: 'Petición aceptada',
+        ok: true,
+        data: contact
+      });
+    }
+  }).catch((error) => {
+    res.status(500).json({
+      status: 500,
+      title: 'Error interno del servidor',
+      detail: error,
+      ok: false
+    })
+  });
+});
 
 /**
  * Check the session
@@ -334,7 +368,7 @@ router.get('/wareHouse/get/region/:regionId', (req, res) => {
 /**
  * Create region
  */
-router.post('/wareHouse/post/createRegion', extract_JWT, jsonVerify,(req, res) => {
+router.post('/wareHouse/post/createRegion', extract_JWT, jsonVerify, (req, res) => {
   region.create({
     name: req.body.name
   }).then((region) => {
@@ -357,7 +391,7 @@ router.post('/wareHouse/post/createRegion', extract_JWT, jsonVerify,(req, res) =
 /**
 * Modify Region
 */
-router.put('/wareHouse/put/region/:regionId',extract_JWT, jsonVerify,(req, res) => {
+router.put('/wareHouse/put/region/:regionId', extract_JWT, jsonVerify, (req, res) => {
   region.findByPk(req.params.regionId).then(regionFound => {
     if (regionFound === null) {
       res.status(404).json({
@@ -400,7 +434,7 @@ router.put('/wareHouse/put/region/:regionId',extract_JWT, jsonVerify,(req, res) 
  * Delete region
  */
 
-router.delete('/wareHouse/delete/region/:regionId',extract_JWT, jsonVerify,(req, res) => {
+router.delete('/wareHouse/delete/region/:regionId', extract_JWT, jsonVerify, (req, res) => {
   region.findByPk(req.params.regionId).then(regionFound => {
     if (regionFound === null) {
       res.status(404).json({
@@ -477,7 +511,7 @@ router.get('/wareHouse/get/country/:countryId', (req, res) => {
 /**
  * Create country
  */
-router.post('/wareHouse/post/createCountry/:regionId',extract_JWT, jsonVerify,(req, res) => {
+router.post('/wareHouse/post/createCountry/:regionId', extract_JWT, jsonVerify, (req, res) => {
   country.create({
     name: req.body.name,
     regionId: req.params.regionId
@@ -501,7 +535,7 @@ router.post('/wareHouse/post/createCountry/:regionId',extract_JWT, jsonVerify,(r
 /**
 * Modify country
 */
-router.put('/wareHouse/put/country/:countryId',extract_JWT, jsonVerify,(req, res) => {
+router.put('/wareHouse/put/country/:countryId', extract_JWT, jsonVerify, (req, res) => {
   country.findByPk(req.params.countryId).then(countryFound => {
     if (countryFound === null) {
       res.status(404).json({
@@ -544,7 +578,7 @@ router.put('/wareHouse/put/country/:countryId',extract_JWT, jsonVerify,(req, res
  * Delete country
  */
 
-router.delete('/wareHouse/delete/country/:countryId',extract_JWT, jsonVerify,(req, res) => {
+router.delete('/wareHouse/delete/country/:countryId', extract_JWT, jsonVerify, (req, res) => {
   country.findByPk(req.params.countryId).then(countryFound => {
     if (countryFound === null) {
       res.status(404).json({
@@ -582,7 +616,7 @@ router.delete('/wareHouse/delete/country/:countryId',extract_JWT, jsonVerify,(re
 /**
  * Create city
  */
-router.post('/wareHouse/post/createCity/:countryId',extract_JWT, jsonVerify,(req, res) => {
+router.post('/wareHouse/post/createCity/:countryId', extract_JWT, jsonVerify, (req, res) => {
   city.create({
     name: req.body.name,
     countryId: req.params.countryId
@@ -606,7 +640,7 @@ router.post('/wareHouse/post/createCity/:countryId',extract_JWT, jsonVerify,(req
 /**
 * Modify city
 */
-router.put('/wareHouse/put/city/:cityId',extract_JWT, jsonVerify,(req, res) => {
+router.put('/wareHouse/put/city/:cityId', extract_JWT, jsonVerify, (req, res) => {
   city.findByPk(req.params.cityId).then(cityFound => {
     if (cityFound === null) {
       res.status(404).json({
@@ -649,7 +683,7 @@ router.put('/wareHouse/put/city/:cityId',extract_JWT, jsonVerify,(req, res) => {
  * Delete city
  */
 
-router.delete('/wareHouse/delete/city/:cityId',extract_JWT, jsonVerify,(req, res) => {
+router.delete('/wareHouse/delete/city/:cityId', extract_JWT, jsonVerify, (req, res) => {
   city.findByPk(req.params.cityId).then(cityFound => {
     if (cityFound === null) {
       res.status(404).json({
@@ -732,7 +766,7 @@ router.get('/wareHouse/get/getCompanies', (req, res) => {
 /**
  * Create company
  */
-router.post('/wareHouse/post/createCompany/:cityId',extract_JWT, jsonVerify,(req, res) => {
+router.post('/wareHouse/post/createCompany/:cityId', extract_JWT, jsonVerify, (req, res) => {
   company.create({
     name: req.body.name,
     cityId: req.params.cityId,
@@ -759,7 +793,7 @@ router.post('/wareHouse/post/createCompany/:cityId',extract_JWT, jsonVerify,(req
 /**
 * Modify company
 */
-router.put('/wareHouse/put/company/:companyId/:cityId',extract_JWT, jsonVerify,(req, res) => {
+router.put('/wareHouse/put/company/:companyId/:cityId', extract_JWT, jsonVerify, (req, res) => {
   company.findByPk(req.params.companyId).then(companyFound => {
     if (companyFound === null) {
       res.status(404).json({
@@ -807,7 +841,7 @@ router.put('/wareHouse/put/company/:companyId/:cityId',extract_JWT, jsonVerify,(
  * Delete company
  */
 
-router.delete('/wareHouse/delete/company/:companyId',extract_JWT, jsonVerify,(req, res) => {
+router.delete('/wareHouse/delete/company/:companyId', extract_JWT, jsonVerify, (req, res) => {
   company.findByPk(req.params.companyId).then(companyFound => {
     if (companyFound === null) {
       res.status(404).json({
@@ -1037,7 +1071,7 @@ router.post('/wareHouse/get/DESC_Contacts', (req, res) => {
 /**
  * Create contact
  */
-router.post('/wareHouse/post/createContact/:cityId/:companyId', extract_JWT, jsonVerify,(req, res) => {
+router.post('/wareHouse/post/createContact/:cityId/:companyId', extract_JWT, jsonVerify, (req, res) => {
   contact.create({
     name: req.body.name,
     lastname: req.body.lastname,
@@ -1049,6 +1083,7 @@ router.post('/wareHouse/post/createContact/:cityId/:companyId', extract_JWT, jso
     preference: req.body.preference,
     cityId: req.params.cityId,
     companyId: req.params.companyId,
+    address: req.body.address,
     image: req.body.image
   }).then((contact) => {
     res.status(200).json({
@@ -1071,7 +1106,7 @@ router.post('/wareHouse/post/createContact/:cityId/:companyId', extract_JWT, jso
 /**
  * Modify Contact
  */
-router.put('/wareHouse/put/contact/:cityId/:companyId/:contactId',extract_JWT, jsonVerify,(req, res) => {
+router.put('/wareHouse/put/contact/:cityId/:companyId/:contactId', extract_JWT, jsonVerify, (req, res) => {
   contact.findByPk(req.params.contactId).then(contactFound => {
     if (contactFound === null) {
       res.status(404).json({
@@ -1123,7 +1158,7 @@ router.put('/wareHouse/put/contact/:cityId/:companyId/:contactId',extract_JWT, j
  * Delete contact
  */
 
-router.delete('/wareHouse/delete/contact/:contactId',extract_JWT, jsonVerify,(req, res) => {
+router.delete('/wareHouse/delete/contact/:contactId', extract_JWT, jsonVerify, (req, res) => {
   contact.findByPk(req.params.contactId).then(contactFound => {
     if (contactFound === null) {
       res.status(404).json({

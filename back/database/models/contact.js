@@ -9,6 +9,7 @@ contact.init({
   lastname:DataTypes.STRING,
   email: DataTypes.STRING,
   position: DataTypes.STRING,
+  address: DataTypes.STRING,
   channel: DataTypes.STRING,
   account: DataTypes.STRING,
   interest: DataTypes.STRING,

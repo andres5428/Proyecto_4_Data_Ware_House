@@ -26,6 +26,7 @@ const URL_ASCENDING_CONTACTS = 'http://localhost:3030/wareHouse/get/ASC_Contacts
 const URL_DESCENDING_CONTACTS = 'http://localhost:3030/wareHouse/get/DESC_Contacts';
 const URL_ADMIN_STATE = 'http://localhost:3030/wareHouse/get/adminState';
 const URL_EXPORT_CONTACTS = 'http://localhost:3030/api/excel/wareHouse/excel/get/contacts';
+const URL_GET_ONE_CONTACT = 'http://localhost:3030/wareHouse/get/getOneUser/';
 
 
 /**
@@ -67,6 +68,7 @@ const label_Paging = document.querySelector('.label_Paging');
 const logo = document.querySelector('.logo');
 const btn_Export_Contacts = document.querySelector('.btn_Export_Contacts');
 const image_Result = document.querySelector('#imageResult');
+const user_Html_Link = document.querySelector('.user_Html_Link');
 
 /**
  * Add event listener to export contacts button
@@ -101,6 +103,14 @@ const check_Admin_State = (() => {
     request.get(URL_ADMIN_STATE).then((response) => {
         if (response.ok === true) {
             admin_State = response.admin
+            if (admin_State === true) {
+                if (user_Html_Link.className === 'user_Html_Link')
+                    user_Html_Link.classList.toggle('user_Html_Link--show')
+            }
+            else {
+                if (user_Html_Link.className === 'user_Html_Link user_Html_Link--show')
+                    user_Html_Link.classList.toggle('user_Html_Link--show')
+            }
         }
         else {
             swal(`${response.title}`, `${response.detail}`, 'error').then(() =>
@@ -147,7 +157,7 @@ const contact_Search = (() => {
     request.create(URL_SEARCH_CONTACTS, data).then((response) => {
         if (response.ok === true) {
             let view_Index = 0;
-            print_Contacts(response.data,view_Index);
+            print_Contacts(response.data, view_Index);
             console.log(response)
         }
     }).catch((error) => console.log({
@@ -181,10 +191,12 @@ if (add_Contact_Btn !== null) {
         contact_City_Select.disabled = true;
         get_Companies_CreateContact();
         get_Regions_CreateContact();
-        $("#progress_Bar_Modal").css("width", `0%`);
+        input_ContactAccount.disabled = true;
+        interest_Bar.id = 'interest_Bar';
+        contact_Interest_Select.value = 0;
+        $("#interest_Bar").css("width", `0%`);
     });
 }
-
 
 /**
  * Add event listener to select of interest in add contact modal
@@ -361,7 +373,7 @@ const print_Contacts = ((data, view_Index) => {
         }
         row.appendChild(contact_Name_Td);
         const contact_Region_Td = document.createElement('td');
-        if (contact.city !== null && contact.city !== null && contact.city.country !==null && contact.city.country.region!==null) {
+        if (contact.city !== null && contact.city !== null && contact.city.country !== null && contact.city.country.region !== null) {
             contact_Region_Td.innerHTML = `${contact.city.country.name}/${contact.city.country.region.name}`;
         } else {
             contact_Region_Td.innerHTML = `No aplica`;
@@ -597,12 +609,6 @@ const check_All_Boxes = (() => {
     });
 });
 
-// /**
-//  * 
-//  */
-// checkbox_All.addEventListener('click', () => {
-//     // check_All_Boxes();
-// })
 
 /**
  * @method create_Modify_Contact
@@ -613,6 +619,7 @@ const create_Modify_Contact = ((listeners) => {
         listener.modify_Icon.addEventListener('click', () => {
             get_Regions_CreateContact();
             get_Companies_CreateContact();
+            get_contact_Info(listener.id);
             if (modal_ModifyContact_Btn.className === 'btn btn-primary modal_ModifyContact_Btn modal_ModifyContact_Btn--hidden') {
                 modal_ModifyContact_Btn.classList.toggle('modal_ModifyContact_Btn--hidden');
             }
@@ -687,6 +694,45 @@ const get_Regions_CreateContact = (() => {
 });
 
 /**
+ * @method  get_contact_Info
+ * @description Request to the server to bring the contact information
+ */
+const get_contact_Info = (id) => {
+    let URL = '';
+    URL = URL_GET_ONE_CONTACT;
+    URL += `${id}`;
+    request.get(URL).then((response) => {
+        fill_Contact_Data(response.data)
+        console.log(response.data)
+    });
+}
+
+/**
+ * @method fill_Contact_Data
+ * @description Fill contact data
+ */
+const fill_Contact_Data = ((data) => {
+    input_ContactName.value = data.name;
+    input_ContactLastName.value = data.lastname;
+    input_ContactPosition.value = data.position;
+    input_ContactEmail.value = data.email;
+    contact_Company_Select.value = data.companyId;
+    contact_Region_Select.value = data.city.country.regionId;
+    get_Specific_Region(data.city.country.regionId, data.city.countryId);
+    get_Specific_Country(data.city.countryId, data.cityId);
+    input_Contact_Address.value = data.address;
+    contact_Interest_Select.value = data.interest;
+    interest_Bar.id = `interest_Bar_Modify`;
+    change_ProgressBar_Width(interest_Bar.id, data.interest);
+    interest_Bar.innerHTML = `${data.interest}%`;
+    input_ContactChannel_Select.value = data.channel;
+    input_ContactAccount.disabled = false;
+    input_ContactAccount.value = data.account;
+    contact_Preference_Select.value = data.preference;
+
+});
+
+/**
  * @method print_Regions_CreateContact
  * @description Print all the regions in the create contact modal
  */
@@ -723,12 +769,12 @@ if (contact_Region_Select !== null) {
  * @method get_Specific_Region
  * @description Get the specific region to bring its countries
  */
-const get_Specific_Region = ((id) => {
+const get_Specific_Region = ((id, countryid) => {
     URL = '';
     URL = URL_GET_SPECIFIC_REGION;
     URL += `${id}`;
     request.get(URL).then((response) => {
-        print_Countries_Create_Contact(response.data);
+        print_Countries_Create_Contact(response.data, countryid);
         contact_Country_Select.disabled = false;
     }).catch((error) => console.log({
         error: error
@@ -739,7 +785,7 @@ const get_Specific_Region = ((id) => {
  * @method print_Countries_Create_Contact
  * @description Print all the countries depending of the region
  */
-const print_Countries_Create_Contact = ((data) => {
+const print_Countries_Create_Contact = ((data, id) => {
     while (contact_Country_Select.firstChild) { contact_Country_Select.removeChild(contact_Country_Select.firstChild) };
     const option_Header = document.createElement('option');
     option_Header.innerHTML = 'Elige un país';
@@ -750,8 +796,12 @@ const print_Countries_Create_Contact = ((data) => {
         const option_country = document.createElement('option');
         option_country.innerHTML = country.name;
         option_country.value = country.id;
+        if (country.id === id) {
+            option_country.selected = true;
+        }
         contact_Country_Select.appendChild(option_country);
     });
+
 });
 
 /**
@@ -768,12 +818,12 @@ if (contact_Country_Select !== null) {
  * @method get_Specific_Country
  * @description Gets the specific country to bring its cities
  */
-const get_Specific_Country = ((id) => {
+const get_Specific_Country = ((id, cityId) => {
     URL = '';
     URL = URL_GET_SPECIFIC_COUNTRY;
     URL += `${id}`;
     request.get(URL).then((response) => {
-        print_Cities_Create_Contact(response.data);
+        print_Cities_Create_Contact(response.data, cityId);
         contact_City_Select.disabled = false;
     });
 });
@@ -782,7 +832,7 @@ const get_Specific_Country = ((id) => {
  * @method print_Cities_Create_Contact
  * @description Print all the cities depending of the country
  */
-const print_Cities_Create_Contact = ((data) => {
+const print_Cities_Create_Contact = ((data, cityId) => {
     while (contact_City_Select.firstChild) { contact_City_Select.removeChild(contact_City_Select.firstChild) };
     const option_Header = document.createElement('option');
     option_Header.innerHTML = 'Elige una ciudad';
@@ -793,6 +843,9 @@ const print_Cities_Create_Contact = ((data) => {
         const option_City = document.createElement('option');
         option_City.innerHTML = city.name;
         option_City.value = city.id;
+        if (city.id === cityId) {
+            option_City.selected = true;
+        }
         contact_City_Select.appendChild(option_City);
     });
 });
@@ -924,7 +977,7 @@ const create_Contact = ((cityId, companyId) => {
         name: input_ContactName.value, lastname: input_ContactLastName.value,
         email: input_ContactEmail.value, position: input_ContactPosition.value,
         channel: input_ContactChannel_Select.value, interest: contact_Interest_Select.value,
-        account: input_ContactAccount.value, preference: contact_Preference_Select.value,
+        account: input_ContactAccount.value, preference: contact_Preference_Select.value, address: input_Contact_Address.value,
         image: image_Result.src
     }
     URL = '';

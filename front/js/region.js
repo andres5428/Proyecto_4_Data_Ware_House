@@ -50,6 +50,7 @@ const modal_Input_CityName = document.querySelector('.modal_Input_CityName');
 const modal_AddCity_Btn = document.querySelector('.modal_AddCity_Btn');
 const modal_ModifyCity_Btn = document.querySelector('.modal_ModifyCity_Btn');
 const logo = document.querySelector('.logo');
+const user_Html_Link = document.querySelector('.user_Html_Link');
 
 /**
  * Add event listener to logo
@@ -66,6 +67,14 @@ const check_Admin_State = (() => {
   request.get(URL_ADMIN_STATE).then((response) => {
     if (response.ok === true) {
       admin_State = response.admin
+      if (admin_State === true) {
+        if (user_Html_Link.className === 'user_Html_Link')
+          user_Html_Link.classList.toggle('user_Html_Link--show')
+      }
+      else {
+        if (user_Html_Link.className === 'user_Html_Link user_Html_Link--show')
+          user_Html_Link.classList.toggle('user_Html_Link--show')
+      }
     }
     else {
       swal(`${response.title}`, `${response.detail}`, 'error').then(() =>

@@ -37,6 +37,7 @@ const modal_Input_CompanyModifyAddress = document.querySelector('.modal_Input_Co
 const modal_Input_CompanyModifyEmail = document.querySelector('.modal_Input_CompanyModifyEmail');
 const modal_Input_CompanyModifyTel = document.querySelector('.modal_Input_CompanyModifyTel');
 const logo = document.querySelector('.logo');
+const user_Html_Link = document.querySelector('.user_Html_Link')
 
 /**
  * Add event listener to logo
@@ -53,6 +54,14 @@ const check_Admin_State = (() => {
     request.get(URL_ADMIN_STATE).then((response) => {
         if (response.ok === true) {
             admin_State = response.admin
+            if (admin_State === true) {
+                if (user_Html_Link.className === 'user_Html_Link')
+                    user_Html_Link.classList.toggle('user_Html_Link--show')
+            }
+            else {
+                if (user_Html_Link.className === 'user_Html_Link user_Html_Link--show')
+                    user_Html_Link.classList.toggle('user_Html_Link--show')
+            }
         }
         else {
             swal(`${response.title}`, `${response.detail}`, 'error').then(() =>
@@ -361,7 +370,7 @@ const fill_Select_Options = ((data) => {
     option_Tag_Disabled.value = '';
     select_City.appendChild(option_Tag_Disabled);
     data.forEach((city) => {
-        if (city!==null && city.country!==null){
+        if (city !== null && city.country !== null) {
             const option_Tag_Value = document.createElement('option');
             option_Tag_Value.innerHTML = `${city.name} / ${city.country.name}`;
             select_City.appendChild(option_Tag_Value);

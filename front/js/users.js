@@ -46,7 +46,7 @@ const inputLastname_Modify_User = document.querySelector('.inputLastname_Modify_
 const inputEmail_Modify_User = document.querySelector('.inputEmail_Modify_User');
 const delete_User_Btn = document.querySelector('.delete_User_Btn');
 const logo = document.querySelector('.logo');
-
+const user_Html_Link = document.querySelector('.user_Html_Link');
 /**
  * Add event listener to logo
  */
@@ -62,11 +62,13 @@ const check_Admin_State = (() => {
   request.get(URL_ADMIN_STATE).then((response) => {
     if (response.ok === true) {
       admin_State = response.admin
-      if (admin_State === false) {
-        create_User_Link.setAttribute("disabled", true);
+      if (admin_State === true) {
+        if (user_Html_Link.className === 'user_Html_Link')
+          user_Html_Link.classList.toggle('user_Html_Link--show')
       }
       else {
-        create_User_Link.removeAttribute("disabled");
+        if (user_Html_Link.className === 'user_Html_Link user_Html_Link--show')
+          user_Html_Link.classList.toggle('user_Html_Link--show')
       }
     }
     else {

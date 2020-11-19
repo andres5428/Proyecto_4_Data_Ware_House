@@ -386,9 +386,9 @@ body .header .nav .ul_Nav {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-right: 1em;
   margin-bottom: 0;
   margin-top: 0;
@@ -406,6 +406,11 @@ body .header .nav .ul_Nav > li {
 }
 
 body .header .nav .ul_Nav > li .user_Html_Link {
+  display: none;
+}
+
+body .header .nav .ul_Nav > li .user_Html_Link--show {
+  display: block;
   color: #ffffff;
   text-decoration: none;
 }
